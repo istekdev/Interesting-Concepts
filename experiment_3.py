@@ -1,4 +1,4 @@
-# EXPERIMENT 3 - DEMONSTRATE
+# EXPERIMENT 3 - DEMONSTRATE ENCRYPTION
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from termcolor import colored
