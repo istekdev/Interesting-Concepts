@@ -1,14 +1,15 @@
-# EXPERIMENT 3 - DEMONSTRATE ENCRYPTION
+# EXPERIMENT 3 - DEMONSTRATE
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from termcolor import colored
 import time
 import os
 
-entropy = os.urandom(32)
+password = input(colored("WHAT WILL BE YOUR PASSWORD: ", "blue", attrs=["bold"]))
 nonce = os.urandom(12)
-obj = AESGCM(entropy)
+obj = AESGCM(password.encode("utf-8"))
+item = input(colored("WHAT DO YOU WANT TO ENCRYPT: ", "blue", attrs=["bold"]))
+enc = obj.encrypt(nonce, item.encode("utf-8"), None)
+print(colored(enc.hex(), "green", attrs=["bold"]))
 
-inp = input(colored("YOUR RAWTEXT: ", "blue", attrs=["bold"]))
-enc = obj.encrypt(nonce, inp.encode("utf-8"), None)
-print(colored(f"YOUR HEX CIPHERTEXT: {enc.hex()}", "green", attrs=["bold"]))
+
